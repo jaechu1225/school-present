@@ -3,44 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Question1</h1>
-
-    <form id="inputForm">
-        <label for="userInput">answer:</label>
-        <input type="text" id="userInput" name="userInput">
-        <button type="button" onclick="processInput()">ok</button>
-    </form>
-
-    <div id="outputArea">
-        <p id="outputResult"></p>
-    </div>
-    <button type="button" id="nextPageButton" disabled>Next</button>
-
+    <title>정답 체크 페이지</title>
     <script>
-        function processInput() {
-            var userInput = document.getElementById("userInput").value;
-            var outputResult = document.getElementById("outputResult");
+        function checkAnswers() {
+            // 사용자가 입력한 답변 가져오기
+            var answer1 = document.getElementById('answer1').value.trim().toLowerCase();
+            var answer2 = document.getElementById('answer2').value.trim().toLowerCase();
+            var answer3 = document.getElementById('answer3').value.trim().toLowerCase();
             
-            if (userInput === "4") {
-                outputResult.innerHTML = "";
-                nextPageButton.disabled = false;
+            // 정답과 비교
+            var correctAnswer1 = "정답1";
+            var correctAnswer2 = "정답2";
+            var correctAnswer3 = "정답3";
+
+            var resultElement = document.getElementById('result');
+
+            if (answer1 === correctAnswer1 && answer2 === correctAnswer2 && answer3 === correctAnswer3) {
+                resultElement.textContent = "정답입니다!";
             } else {
-                outputResult.innerHTML = "incorrect";
-                nextPageButton.disabled = true;
+                resultElement.textContent = "틀렸습니다. 다시 시도해보세요.";
             }
         }
     </script>
+</head>
+<body>
+    <h1>정답 체크 페이지</h1>
+    <label for="answer1">답변 1:</label>
+    <input type="text" id="answer1"><br><br>
 
+    <label for="answer2">답변 2:</label>
+    <input type="text" id="answer2"><br><br>
+
+    <label for="answer3">답변 3:</label>
+    <input type="text" id="answer3"><br><br>
+
+    <button onclick="checkAnswers()">정답 확인</button>
+
+    <p id="result"></p>
 </body>
 </html>
+
