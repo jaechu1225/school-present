@@ -25,22 +25,22 @@
     <div id="outputArea">
         <p id="outputResult"></p>
     </div>
-   <button type="button" id="nextPageButton" onclick="changePage()" disabled>Next</button>
+    <button type="button" id="nextPageButton" disabled>Next</button>
 
     <script>
         function processInput() {
             var userInput = document.getElementById("userInput").value;
             var outputResult = document.getElementById("outputResult");
+            
             if (userInput === "4") {
+                outputResult.innerHTML = "";
                 nextPageButton.disabled = false;
             } else {
                 outputResult.innerHTML = "incorrect";
                 nextPageButton.disabled = true;
             }
         }
-
     </script>
 
 </body>
 </html>
-
