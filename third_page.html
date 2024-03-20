@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Question3</h1>
+
+    <form id="inputForm">
+        <label for="userInput">answer:</label>
+        <input type="text" id="userInput" name="userInput">
+        <button type="button" onclick="processInput()">ok</button>
+    </form>
+
+    <div id="outputArea">
+        <p id="outputResult"></p>
+    </div>   <button type="button" id="nextPageButton" onclick="changePage()" disabled>Next</button>
+
+    <script>
+        function processInput() {
+            var userInput = document.getElementById("userInput").value;
+            var outputResult = document.getElementById("outputResult");
+            if (userInput === "87") {
+                outputResult.innerHTML = "loading... please wait ";
+	    setTimeout(goToSecondPage, 1500);
+
+                function goToSecondPage() {
+
+                window.location.href = "last_page.html";
+        }
+            } else {
+                outputResult.innerHTML = "incorrect";
+                nextPageButton.disabled = true;
+            }
+        }
+
+        function changePage() {
+            var existingH1 = document.querySelector("h1");
+            if (existingH1) {
+                existingH1.remove();
+            }
+
+            var existingForm = document.getElementById("inputForm");
+            if (existingForm) {
+                existingForm.remove();
+            }
+
+            var existingOutputArea = document.getElementById("outputArea");
+            if (existingOutputArea) {
+                existingOutputArea.remove();
+            }
+
+            var existingNextButton = document.getElementById("nextPageButton");
+            if (existingNextButton) {
+                existingNextButton.remove();
+            }
+
+            var h2Element = document.createElement("h2");
+            h2Element.innerHTML = "Qeustion 2";
+            document.body.appendChild(h2Element);
+
+            window.location.href = "third_page.html";
+        }
+    </script>
+
+</body>
+</html>
